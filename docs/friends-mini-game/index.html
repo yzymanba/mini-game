@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#111827" />
+    <title>默契问答小游戏</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="wrap">
+      <header class="top">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">MQ</div>
+          <div>
+            <div class="title">默契问答</div>
+            <div class="sub">发链接给朋友，在微信/QQ里直接玩</div>
+          </div>
+        </div>
+        <button id="btnReset" class="btn ghost" type="button" title="重置">重置</button>
+      </header>
+
+      <section id="panelIntro" class="card">
+        <h2 class="h2">怎么玩</h2>
+        <ol class="ol">
+          <li>你先回答 6 个问题，生成邀请链接</li>
+          <li>把链接发给朋友（微信/QQ均可）</li>
+          <li>朋友打开后回答同样的问题</li>
+          <li>系统自动计算默契分，并展示“哪些一致/不一致”</li>
+        </ol>
+        <div class="row">
+          <button id="btnCreate" class="btn primary" type="button">我来创建邀请</button>
+          <button id="btnJoin" class="btn" type="button">我有邀请链接</button>
+        </div>
+        <div class="tip">
+          提示：本小游戏<strong>不需要服务器</strong>，答案只会被编码进邀请链接（放在 URL 的 # 后面），不会上传到任何地方。
+        </div>
+      </section>
+
+      <section id="panelQuiz" class="card hidden" aria-live="polite">
+        <div class="quizTop">
+          <div class="badge" id="roleBadge"></div>
+          <div class="progress">
+            <div class="progressBar" id="progressBar"></div>
+          </div>
+          <div class="step" id="stepText"></div>
+        </div>
+
+        <h2 class="q" id="qText"></h2>
+        <div class="choices" id="choices"></div>
+
+        <div class="row">
+          <button id="btnBack" class="btn ghost" type="button">上一步</button>
+          <button id="btnSkip" class="btn ghost" type="button">随机一个</button>
+        </div>
+      </section>
+
+      <section id="panelLink" class="card hidden">
+        <h2 class="h2">邀请链接已生成</h2>
+        <p class="p">复制后发给朋友（微信/QQ聊天里粘贴发送）。</p>
+        <div class="copyBox">
+          <input id="inviteLink" class="input" type="text" readonly />
+          <button id="btnCopy" class="btn primary" type="button">复制</button>
+        </div>
+        <div class="row">
+          <button id="btnShare" class="btn" type="button">系统分享</button>
+          <button id="btnNew" class="btn ghost" type="button">再来一局</button>
+        </div>
+        <div class="tip">
+          若微信/QQ里打不开，请用浏览器打开链接；或把页面部署到公网（如 GitHub Pages）再分享。
+        </div>
+      </section>
+
+      <section id="panelResult" class="card hidden" aria-live="polite">
+        <h2 class="h2">默契结果</h2>
+        <div class="score">
+          <div class="scoreNum" id="scoreNum">0</div>
+          <div class="scoreText" id="scoreText">/ 6</div>
+        </div>
+        <div id="resultList" class="resultList"></div>
+        <div class="row">
+          <button id="btnRematch" class="btn primary" type="button">我也创建一局</button>
+          <button id="btnReplay" class="btn ghost" type="button">再答一次</button>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>本地纯前端 · 适配微信/QQ内置浏览器</span>
+      </footer>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
